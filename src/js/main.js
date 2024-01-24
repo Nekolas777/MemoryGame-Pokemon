@@ -5,6 +5,11 @@ const cardsContainer = d.querySelector('.container-cards');
 // arreglo para almacenar las cartas que ya hay sido seleccionadas
 let seleccions = []
 
+// capturamos los sonidos de efecto a utilizar
+const pairFoundSound = d.getElementById('par-found');
+const optionSelectedSound = d.getElementById('option-selected');
+const pairNotFoundSound = d.getElementById('par-notFound');
+
 // endpoint to access the pokeAPI 
 const url = 'https://pokeapi.co/api/v2/pokemon/'
 
@@ -185,7 +190,11 @@ cardsContainer.addEventListener('click', (e) => {
 
                 if (firstCard.innerHTML !== secondCard.innerHTML) {
 
-                    console.log("SON DIFERENTES");
+                    pairNotFoundSound.play()
+                    setTimeout(() => {
+                        pairNotFoundSound.pause();
+                        pairNotFoundSound.currentTime = 0;
+                    }, 1000);
 
                     let primeraCardFront = firstCard.querySelector('.front');
                     let primeraCardBack = firstCard.querySelector('.back');
@@ -196,9 +205,15 @@ cardsContainer.addEventListener('click', (e) => {
                     primeraCardBack.style.transform = 'rotateY(180deg)';
                     segundaCardFront.style.transform = 'rotateY(0deg)';
                     segundaCardsBack.style.transform = 'rotateY(180deg)';
+                    console.log("SON DIFERENTES");
                 }
                 else {
-                    alert("HALLASTE UN PAR WEBOOOOON!!!")
+                    pairFoundSound.play();
+                    setTimeout( () => {
+                        pairFoundSound.pause();
+                        pairFoundSound.currentTime = 0;
+                    }, 1000);
+                    console.log("Hallaste un par");
                 }
 
             }, 1000);
