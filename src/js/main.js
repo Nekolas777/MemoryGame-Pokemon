@@ -4,11 +4,29 @@ const d = document;
 const cardsContainer = d.querySelector('.container-cards');
 // arreglo para almacenar las cartas que ya hay sido seleccionadas
 let seleccions = []
+// intentos disponbiles;
+let attempsHTML = d.getElementById('attemps');
+let attemps = parseInt(attempsHTML.textContent);
+
+
+function substractAttemps(option) {
+
+    if (option && attemps > 0) {
+        attemps--;
+        attempsHTML.textContent = attemps;
+    }
+
+    if (attemps === 0) {
+        // aqui deberiamos mostrar un modal cuando se perdio el juego
+        console.log('Perdiste el juego');
+    }
+
+}
 
 // capturamos los sonidos de efecto a utilizar
 const pairFoundSound = d.getElementById('par-found');
-const optionSelectedSound = d.getElementById('option-selected');
 const pairNotFoundSound = d.getElementById('par-notFound');
+const optionSelectedSound = d.getElementById('option-selected');
 
 // endpoint to access the pokeAPI 
 const url = 'https://pokeapi.co/api/v2/pokemon/'
@@ -98,8 +116,6 @@ function styleCard(bgColor, backContainer) {
 
 function renderCards(arrCards) {
 
-    console.log(arrCards);
-
     let icons = uploadImages(arrCards);
 
     // aquí almacenaremos la cantidad de cartas creadas
@@ -162,6 +178,36 @@ function renderCards(arrCards) {
     console.log(cardsContainer);
 }
 
+function startGame(time) {
+
+    const cards = cardsContainer.querySelectorAll('.card')
+
+    cards.forEach( (card) => {
+
+        const frontCard = card.querySelector('.front');
+        const backCard = card.querySelector('.back');
+
+        frontCard.style.transform = 'rotateY(180deg)';
+        backCard.style.transform = 'rotateY(0deg)';
+
+    })
+    
+    setTimeout(() => {
+
+        cards.forEach( (card) => {
+
+            const frontCard = card.querySelector('.front');
+            const backCard = card.querySelector('.back');
+    
+            frontCard.style.transform = 'rotateY(0deg)';
+            backCard.style.transform = 'rotateY(180deg)';
+    
+        })      
+
+    }, time * 1000);
+
+}
+
 cardsContainer.addEventListener('click', (e) => {
 
     const clickedCard = e.target.closest('.card');
@@ -182,16 +228,15 @@ cardsContainer.addEventListener('click', (e) => {
         console.log(seleccions);
         if (seleccions.length == 2) {
 
-            // almacenamos la referencia HTML de la ard en las variables
+            // almacenamos la referencia HTML de la card en las variables
             let firstCard = seleccions[0];
             let secondCard = seleccions[1];
 
             setTimeout(() => {
 
                 if (firstCard.innerHTML !== secondCard.innerHTML) {
-
-                    pairNotFoundSound.play()
-                    setTimeout(() => {
+                    pairNotFoundSound.play();
+                    setTimeout( () => {
                         pairNotFoundSound.pause();
                         pairNotFoundSound.currentTime = 0;
                     }, 1000);
@@ -205,7 +250,9 @@ cardsContainer.addEventListener('click', (e) => {
                     primeraCardBack.style.transform = 'rotateY(180deg)';
                     segundaCardFront.style.transform = 'rotateY(0deg)';
                     segundaCardsBack.style.transform = 'rotateY(180deg)';
-                    console.log("SON DIFERENTES");
+
+                    // restamos los intentos disponibles por cada intento fallido
+                    substractAttemps(true);
                 }
                 else {
                     pairFoundSound.play();
@@ -213,7 +260,6 @@ cardsContainer.addEventListener('click', (e) => {
                         pairFoundSound.pause();
                         pairFoundSound.currentTime = 0;
                     }, 1000);
-                    console.log("Hallaste un par");
                 }
 
             }, 1000);
