@@ -21,6 +21,103 @@ small {
     font-size: .8rem;
 }
 
+/*-------------------------- START SCREEN --------------------------*/
+
+.start-screen {
+    background: url("/public/images/gameStart-background.png");
+    height: 100dvh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.start-screen .start-content {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    border: 1px solid black;
+}
+
+.start-content>h1 {
+    text-transform: uppercase;
+    color: #f0c305;
+    text-align: center;
+    text-shadow: 2px 0 #36b, -2px 0 #36b, 0 2px #36b, 0 -2px #36b, 1px 1px #36b,
+        -1px -1px #36b, 1px -1px #36b, -1px 1px #36b;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+.start-content > p {
+    text-transform: uppercase;
+    color: #36b;
+    text-align: center;
+    text-shadow: 2px 0 #f0c305, -2px 0 #f0c305, 0 2px #f0c305, 0 -2px #f0c305, 1px 1px #f0c305,
+        -1px -1px #f0c305, 1px -1px #f0c305, -1px 1px #f0c305;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+}
+
+.logo-pokemon {
+    width: 100%;
+    max-width: 650px;
+}
+
+.start-content .difficult-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    /* border: 1px solid blue; */
+    margin-top: 25px;
+}
+
+.difficult-container>button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 3px solid #1862a7;
+    background-color: #f3f599;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #181823;
+}
+
+#startGame-btn {
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-top: none;
+    box-shadow: 0px 5px #11235A;
+    background-color: #2362ce;
+    color: #fff;
+    border-radius: 15px;
+    letter-spacing: .8px;
+    transition: all 0.2s ease-in-out;
+}
+
+#startGame-btn:hover {
+    background-color: rgb(31, 69, 136);
+}
+
+#startGame-btn:active {
+    transform: translate(0, 1px);
+    box-shadow: 0px 3px #11235A;
+}
+
+.pikachu-gif {
+    width: 250px;
+}
+
+
 /*-------------------------- OPTIONS CONTAINER --------------------------*/
 
 .options-container {
@@ -89,10 +186,10 @@ small {
 .card {
     height: 400px;
     width: 100%;
-    position: relative; 
+    position: relative;
 }
 
-.front > img {
+.front>img {
     width: inherit;
     height: inherit;
     border-radius: 1.5rem;
@@ -214,21 +311,10 @@ strong {
 }
 
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1440px) {}
 
-}
+@media screen and (max-width: 1160px) {}
 
-@media screen and (max-width: 1160px) {
-    
-    
-}
+@media screen and (max-width: 865px) {}
 
-@media screen and (max-width: 865px) {
-    
-   
-}
-
-@media screen and (max-width: 565px) {
-    
- 
-}
+@media screen and (max-width: 565px) {}

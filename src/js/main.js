@@ -140,7 +140,7 @@ function renderCards(arrCards) {
 
         cardElement.innerHTML = `
             <div class="front">
-                <img src="public/pokecard-reverse.png">
+                <img src="public/images/pokecard-reverse.png">
             </div>
             <div class="back">
                 <div class="hp-container">
