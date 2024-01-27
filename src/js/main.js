@@ -1,14 +1,18 @@
 import { pokemonColor } from "./data";
 
 const d = document;
-const cardsContainer = d.querySelector('.container-cards');
+export const cardsContainer = d.querySelector('.container-cards');
 // arreglo para almacenar las cartas que ya hay sido seleccionadas
 let seleccions = []
 // intentos disponbiles;
 let attempsHTML = d.getElementById('attemps');
 let attemps = parseInt(attempsHTML.textContent);
 
+// capturamos los sonidos de efecto a utilizar
+const pairFoundSound = d.getElementById('par-found');
+const pairNotFoundSound = d.getElementById('par-notFound');
 
+// actualizamos los intentos
 function substractAttemps(option) {
 
     if (option && attemps > 0) {
@@ -23,15 +27,10 @@ function substractAttemps(option) {
 
 }
 
-// capturamos los sonidos de efecto a utilizar
-const pairFoundSound = d.getElementById('par-found');
-const pairNotFoundSound = d.getElementById('par-notFound');
-const optionSelectedSound = d.getElementById('option-selected');
-
 // endpoint to access the pokeAPI 
 const url = 'https://pokeapi.co/api/v2/pokemon/'
 
-function getPokemon(quantity) {
+export function getPokemon(quantity) {
 
     // creamos un arreglo de promesas
     const promises = [];
@@ -178,7 +177,7 @@ function renderCards(arrCards) {
     console.log(cardsContainer);
 }
 
-function startGame(time) {
+export function startGame(time) {
 
     const cards = cardsContainer.querySelectorAll('.card')
 
@@ -273,34 +272,3 @@ cardsContainer.addEventListener('click', (e) => {
     }
 
 })
-
-
-function selectCards(seleccions, container) {
-
-    let firstCard = document.getElementById(seleccions[0]);
-    let secondCard = document.getElementById(seleccions[1]);
-    let frontCards = firstCard.querySelector('.card > .front');
-    let backCards = firstCard.querySelector('.card > .back');
-    let frontCards1 = secondCard.querySelector('.card > .front');
-    let backCards1 = secondCard.querySelector('.card > .back');
-
-    setTimeout(() => {
-
-        if (firstCard.id !== secondCard.id) {
-            console.log("SON DIFERENTES")
-
-            frontCards.style.transform = 'rotateY(0deg)';
-            backCards.style.transform = 'rotateY(180deg)';
-            frontCards1.style.transform = 'rotateY(0deg)';
-            backCards1.style.transform = 'rotateY(180deg)';
-        }
-        else {
-            console.log("Ambas cartas son iwales uwu");
-        }
-
-        console.log(firstCard, secondCard);
-    }, 1000);
-
-}
-
-document.addEventListener('DOMContentLoaded', getPokemon(5));
