@@ -31,13 +31,13 @@
       <button id="startGame-btn">Start the game</button>
     </div>
   </section>
-  <div class="attemps-container" style="display: none;">
-    <p>Attemps: <span id="attemps">3</span></p>
+  <div class="attemps-container">
+    <p>Attemps: <span id="attemps"></span></p>
   </div>
-  <div class="options-container" style="display: none;">
-    <a href="#"><i class="fa-solid fa-volume-high"></i></a>
-    <a href="#"><i class="fa-solid fa-arrows-rotate"></i></a>
-    <a href="#"><i class="fa-solid fa-code"></i></a>
+  <div class="options-container">
+    <i id="volume-option" class="fa-solid fa-volume-high"></i>
+    <i id="flip-option" class="fa-solid fa-arrow-right-arrow-left"></i>
+    <a href="https://github.com/Nekolas777" target="_blank"><i id="code-option" class="fa-solid fa-code"></i></a>
   </div>
   <section class="container-cards" style="display: none;">
     <!-- You can use another HTML tag for a better structure, however, for the card flip i do it like this -->
@@ -48,6 +48,7 @@
   <audio id="option-selected" src="sounds/pokemon-plink-test.mp3"></audio>
   <script src="src/js/main.js" type="module"></script>
   <script src="src/js/screen-start.js" type="module"></script>
+  <script src="src/js/game-options.js" type="module"></script>
 </body>
 
 </html>

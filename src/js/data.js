@@ -20,4 +20,18 @@ export const pokemonColor = {
     "fairy": "#ee99ac",
 };
 
+// if you add more difficults, you can modify this
+export const gameSelection = {
+    normal: {
+        attemps: 3,
+        timeFlip: 2.5,
+        numCards: 5,
+    },
+    hard: { 
+        attemps: 5,
+        timeFlip: 5,
+        numCards: 10,
+    }
+}
 
+/* console.log(gameSelection.hard); */

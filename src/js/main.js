@@ -1,37 +1,20 @@
 import { pokemonColor } from "./data";
 
-const d = document;
-export const cardsContainer = d.querySelector('.container-cards');
-// arreglo para almacenar las cartas que ya hay sido seleccionadas
-let seleccions = []
-// intentos disponbiles;
-let attempsHTML = d.getElementById('attemps');
-let attemps = parseInt(attempsHTML.textContent);
-
+export const cardsContainer = document.querySelector('.container-cards');
+export const attempsHTML = document.getElementById('attemps');
 // capturamos los sonidos de efecto a utilizar
-const pairFoundSound = d.getElementById('par-found');
-const pairNotFoundSound = d.getElementById('par-notFound');
-
-// actualizamos los intentos
-function substractAttemps(option) {
-
-    if (option && attemps > 0) {
-        attemps--;
-        attempsHTML.textContent = attemps;
-    }
-
-    if (attemps === 0) {
-        // aqui deberiamos mostrar un modal cuando se perdio el juego
-        console.log('Perdiste el juego');
-    }
-
-}
+const pairFoundSound = document.getElementById('par-found');
+const pairNotFoundSound = document.getElementById('par-notFound');
 
 // endpoint to access the pokeAPI 
 const url = 'https://pokeapi.co/api/v2/pokemon/'
 
-export function getPokemon(quantity) {
+// arreglo para almacenar las cartas que ya hay sido seleccionadas
+let seleccions = []
 
+// actualizamos los intentos
+
+export function getPokemon(quantity) {
     // creamos un arreglo de promesas
     const promises = [];
 
@@ -113,7 +96,7 @@ function styleCard(bgColor, backContainer) {
 
 }
 
-function renderCards(arrCards) {
+export function renderCards(arrCards) {
 
     let icons = uploadImages(arrCards);
 
@@ -177,11 +160,11 @@ function renderCards(arrCards) {
     console.log(cardsContainer);
 }
 
-export function startGame(time) {
+export function displayCards(time) {
 
     const cards = cardsContainer.querySelectorAll('.card')
 
-    cards.forEach( (card) => {
+    cards.forEach((card) => {
 
         const frontCard = card.querySelector('.front');
         const backCard = card.querySelector('.back');
@@ -190,23 +173,24 @@ export function startGame(time) {
         backCard.style.transform = 'rotateY(0deg)';
 
     })
-    
+
     setTimeout(() => {
 
-        cards.forEach( (card) => {
+        cards.forEach((card) => {
 
             const frontCard = card.querySelector('.front');
             const backCard = card.querySelector('.back');
-    
+
             frontCard.style.transform = 'rotateY(0deg)';
             backCard.style.transform = 'rotateY(180deg)';
-    
-        })      
+
+        })
 
     }, time * 1000);
 
 }
 
+// en este evento controlaremos las acciones sobre las cards en su contenedor padre (cardContainer)
 cardsContainer.addEventListener('click', (e) => {
 
     const clickedCard = e.target.closest('.card');
@@ -235,7 +219,7 @@ cardsContainer.addEventListener('click', (e) => {
 
                 if (firstCard.innerHTML !== secondCard.innerHTML) {
                     pairNotFoundSound.play();
-                    setTimeout( () => {
+                    setTimeout(() => {
                         pairNotFoundSound.pause();
                         pairNotFoundSound.currentTime = 0;
                     }, 1000);
@@ -251,11 +235,11 @@ cardsContainer.addEventListener('click', (e) => {
                     segundaCardsBack.style.transform = 'rotateY(180deg)';
 
                     // restamos los intentos disponibles por cada intento fallido
-                    substractAttemps(true);
+                    substractAttemps();
                 }
                 else {
                     pairFoundSound.play();
-                    setTimeout( () => {
+                    setTimeout(() => {
                         pairFoundSound.pause();
                         pairFoundSound.currentTime = 0;
                     }, 1000);
@@ -272,3 +256,20 @@ cardsContainer.addEventListener('click', (e) => {
     }
 
 })
+
+function substractAttemps() {
+    // declaramos la variable ya que se ejecuta luego de haberse cargado el dom
+    let attemps = parseInt(attempsHTML.textContent);
+    
+    if (attemps && attemps > 0) {
+        attemps--;
+        /* console.log(attemps); */
+        attempsHTML.textContent = attemps;
+    }
+
+    if (attemps === 0) {
+        // aqui deberiamos mostrar un modal cuando se perdio el juego
+        alert('Perdiste el juego');
+    }
+
+}

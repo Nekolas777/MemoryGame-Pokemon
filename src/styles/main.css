@@ -12,6 +12,11 @@
 }
 
 body {
+    /* background-image: url("/public/images/background-Game.jpg"); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
     min-height: 100dvh;
     height: 100%;
     /* border: 2px solid blue; */
@@ -21,15 +26,23 @@ small {
     font-size: .8rem;
 }
 
+a {
+    text-decoration: none;
+}
+
 /*-------------------------- START SCREEN --------------------------*/
 
 .start-screen {
+    /* border: 1px solid red; */
+    width: 100%;
+    position: fixed;
     height: 100dvh;
     background-image: url("/public/images/gameStart-background.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     transition: transform 2.5s cubic-bezier(1, 0.05, 0.55, 0.95);
+    z-index: 999;
 }
 
 .start-screen.slide-up {
@@ -161,20 +174,27 @@ small {
     border-right: none;
     padding: 12px 20px;
     border-radius: 15px 0px 0px 20px;
-    display: inline-block;
     position: fixed;
     right: 0;
     top: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
     z-index: 10;
 }
 
-.options-container a i {
-    font-size: 20px;
+.options-container > i {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    font-size: 21px;
     color: #181823;
+}
+
+.options-container > a > i {
+    font-size: 21px;
+    color: #000;
 }
 
 
