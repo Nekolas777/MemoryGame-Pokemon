@@ -10,7 +10,10 @@ const pairNotFoundSound = document.getElementById('par-notFound');
 const url = 'https://pokeapi.co/api/v2/pokemon/'
 
 // arreglo para almacenar las cartas que ya hay sido seleccionadas
-let seleccions = []
+export let seleccions = [];
+
+// contador de puntos que verifica cuando todos los pares hayan sido encontrados
+let points = 0;
 
 // actualizamos los intentos
 
@@ -160,9 +163,37 @@ export function renderCards(arrCards) {
     console.log(cardsContainer);
 }
 
+export function shuffleCards() {
+
+    console.log(seleccions);
+    seleccions = [];
+    console.log(seleccions);
+
+    const cards = Array.from(cardsContainer.querySelectorAll('.card'));
+
+    const shuffledCards = cards.sort(() => 0.5 - Math.random());
+
+    cards.forEach((card) => {
+
+        const frontCard = card.querySelector('.front');
+        const backCard = card.querySelector('.back');
+
+        frontCard.style.transform = 'rotateY(0deg)';
+        backCard.style.transform = 'rotateY(180deg)';
+    })
+
+    cardsContainer.innerHTML = '';
+
+    shuffledCards.forEach(card => {
+        cardsContainer.appendChild(card);
+
+    })
+
+}
+
 export function displayCards(time) {
 
-    const cards = cardsContainer.querySelectorAll('.card')
+    const cards = Array.from(cardsContainer.querySelectorAll('.card'));
 
     cards.forEach((card) => {
 
@@ -171,9 +202,9 @@ export function displayCards(time) {
 
         frontCard.style.transform = 'rotateY(180deg)';
         backCard.style.transform = 'rotateY(0deg)';
-
     })
 
+    // pasado un tiempo (en segundos) las cartas se voltean
     setTimeout(() => {
 
         cards.forEach((card) => {
@@ -181,9 +212,11 @@ export function displayCards(time) {
             const frontCard = card.querySelector('.front');
             const backCard = card.querySelector('.back');
 
-            frontCard.style.transform = 'rotateY(0deg)';
-            backCard.style.transform = 'rotateY(180deg)';
-
+            // Solo voltear la tarjeta si no está ya volteada
+            if (frontCard.style.transform != 'rotateY(0deg)' && backCard.style.transform != 'rotateY(180deg)') {
+                frontCard.style.transform = 'rotateY(0deg)';
+                backCard.style.transform = 'rotateY(180deg)';
+            }
         })
 
     }, time * 1000);
@@ -205,15 +238,17 @@ cardsContainer.addEventListener('click', (e) => {
             frontCards.style.transform = 'rotateY(180deg)';
             backCards.style.transform = 'rotateY(0deg)';
 
-            seleccions.push(clickedCard);
+            console.log(seleccions);
+            seleccions.push(clickedCard)
+            console.log(seleccions);
+
         }
 
-        console.log(seleccions);
-        if (seleccions.length == 2) {
+        if (seleccions.length === 2) {
 
             // almacenamos la referencia HTML de la card en las variables
             let firstCard = seleccions[0];
-            let secondCard = seleccions[1];
+            let secondCard = seleccions[seleccions.length - 1];
 
             setTimeout(() => {
 
@@ -233,7 +268,6 @@ cardsContainer.addEventListener('click', (e) => {
                     primeraCardBack.style.transform = 'rotateY(180deg)';
                     segundaCardFront.style.transform = 'rotateY(0deg)';
                     segundaCardsBack.style.transform = 'rotateY(180deg)';
-
                     // restamos los intentos disponibles por cada intento fallido
                     substractAttemps();
                 }
@@ -243,6 +277,8 @@ cardsContainer.addEventListener('click', (e) => {
                         pairFoundSound.pause();
                         pairFoundSound.currentTime = 0;
                     }, 1000);
+
+                    pairFound();
                 }
 
             }, 1000);
@@ -257,10 +293,22 @@ cardsContainer.addEventListener('click', (e) => {
 
 })
 
+function pairFound() {
+
+    const cards = Array.from(cardsContainer.querySelectorAll('.card'));
+    points++;
+
+    if (points === (cards.length / 2)) {
+        console.log('Ganaste el juego');
+    }
+
+    /* console.log(cards); */
+}
+
 function substractAttemps() {
     // declaramos la variable ya que se ejecuta luego de haberse cargado el dom
     let attemps = parseInt(attempsHTML.textContent);
-    
+
     if (attemps && attemps > 0) {
         attemps--;
         /* console.log(attemps); */

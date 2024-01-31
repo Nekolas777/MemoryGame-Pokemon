@@ -1,14 +1,14 @@
-import { cardsContainer, displayCards } from "./main";
+import { cardsContainer, displayCards, seleccions, shuffleCards } from "./main.js";
 
 const volumeOption = document.getElementById('volume-option');
 const flipOption = document.getElementById('flip-option');
 
 // variable para verificar si el comodin ya ha sido usado
-let hasUsedWildcard = false;
+export let hasUsedWildcard = false;
 
 function cardsAreFlipped() {
 
-    const cards = cardsContainer.querySelectorAll('.card');
+    const cards = Array.from(cardsContainer.querySelectorAll('.card'));
     let countFlips = 0;
 
     cards.forEach(card => {
@@ -16,6 +16,7 @@ function cardsAreFlipped() {
         const frontCard = card.querySelector('.front');
         const backCard = card.querySelector('.back');
 
+        // agregar al contador si la carta ya esta volteada
         if (frontCard.style.transform == 'rotateY(180deg)' && 
             backCard.style.transform == 'rotateY(0deg)'){ 
             countFlips++;
@@ -40,16 +41,19 @@ volumeOption.addEventListener('click', (e) => {
 });
 
 flipOption.addEventListener('click', (e) => {
+
     console.log('Hola soy el restart');
     
     if (!cardsAreFlipped()) {
 
         if (!hasUsedWildcard) {
-            displayCards(3);
+            shuffleCards();
+            displayCards(3)
             hasUsedWildcard = true;
+            flipOption.style.display = 'none';  
         }
         else {
-            alert('you only have one wild card 😨')
+            alert('you only have one wild card 😨');
         }
     }
     else {
