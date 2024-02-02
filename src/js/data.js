@@ -35,3 +35,18 @@ export const gameSelection = {
 }
 
 /* console.log(gameSelection.hard); */
+
+export const gameState = {
+
+    win: {
+        text: "You Win",
+        img: "/public/images/pichu-win.gif",
+        info: "win_img"
+    },
+    lose: {
+        text: "You Lose",
+        img: "/public/images/hunter-lose.gif",
+        info: "lose_img"
+    }
+
+}

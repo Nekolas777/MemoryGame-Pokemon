@@ -1,8 +1,8 @@
-import { cardsContainer, displayCards, seleccions, shuffleCards } from "./main.js";
+import { cardsContainer, shuffleCards } from "./main.js";
 
 const volumeOption = document.getElementById('volume-option');
-const flipOption = document.getElementById('flip-option');
 
+export const flipOption = document.getElementById('flip-option');
 // variable para verificar si el comodin ya ha sido usado
 export let hasUsedWildcard = false;
 
@@ -47,14 +47,13 @@ flipOption.addEventListener('click', (e) => {
     if (!cardsAreFlipped()) {
 
         if (!hasUsedWildcard) {
-            shuffleCards();
-            displayCards(3)
+            shuffleCards(3);
             hasUsedWildcard = true;
             flipOption.style.display = 'none';  
         }
-        else {
+        /* else {
             alert('you only have one wild card 😨');
-        }
+        } */
     }
     else {
         console.log('las cartas ya estan volteadas');

@@ -1,8 +1,11 @@
-import { pokemonColor } from "./data";
+import { pokemonColor, gameState } from "./data";
+import { flipOption, hasUsedWildcard } from "./game-options";
 
 export const cardsContainer = document.querySelector('.container-cards');
 export const attempsHTML = document.getElementById('attemps');
+export const gameOverScreen = document.querySelector('.gameOver-screen');
 // capturamos los sonidos de efecto a utilizar
+const startScreen = document.querySelector('.start-screen');
 const pairFoundSound = document.getElementById('par-found');
 const pairNotFoundSound = document.getElementById('par-notFound');
 
@@ -10,12 +13,37 @@ const pairNotFoundSound = document.getElementById('par-notFound');
 const url = 'https://pokeapi.co/api/v2/pokemon/'
 
 // arreglo para almacenar las cartas que ya hay sido seleccionadas
-export let seleccions = [];
+let seleccions = [];
 
 // contador de puntos que verifica cuando todos los pares hayan sido encontrados
 let points = 0;
+// puntos totales acumulados por cada flip encontrado o perdida
+let totalPoints = 0;
 
-// actualizamos los intentos
+export function resetGame() {
+
+    gameOverScreen.classList.remove('aparittion');
+    startScreen.style.display = 'block';
+    startScreen.style.transform = 'translateY(0%)';
+    cardsContainer.style.display = 'none';
+    flipOption.style.display = 'block';
+    points = 0;
+    totalPoints = 0;
+
+}
+
+function displayGameOverScreen( _state ) {
+
+    const tittle = document.getElementById('gameOver-tittle');
+    const image = document.getElementById('gameOver-gif');
+    const pointsHTML = document.getElementById('points');
+
+    tittle.textContent =_state.text;
+    image.src = _state.img;
+    image.alt = _state.info;
+    pointsHTML.textContent = totalPoints;
+
+}
 
 export function getPokemon(quantity) {
     // creamos un arreglo de promesas
@@ -163,11 +191,7 @@ export function renderCards(arrCards) {
     console.log(cardsContainer);
 }
 
-export function shuffleCards() {
-
-    console.log(seleccions);
-    seleccions = [];
-    console.log(seleccions);
+export function shuffleCards(time) {
 
     const cards = Array.from(cardsContainer.querySelectorAll('.card'));
 
@@ -188,6 +212,16 @@ export function shuffleCards() {
         cardsContainer.appendChild(card);
 
     })
+
+    displayCards(time);
+
+    /* console.log(seleccions); */
+    // si el boton ha sido presionado reiniciamos el contador de puntos
+    if (hasUsedWildcard == false) {
+        points = 0;
+        seleccions = [];
+    }
+    /* console.log(seleccions); */
 
 }
 
@@ -269,6 +303,7 @@ cardsContainer.addEventListener('click', (e) => {
                     segundaCardFront.style.transform = 'rotateY(0deg)';
                     segundaCardsBack.style.transform = 'rotateY(180deg)';
                     // restamos los intentos disponibles por cada intento fallido
+                    totalPoints -= 25;
                     substractAttemps();
                 }
                 else {
@@ -278,6 +313,7 @@ cardsContainer.addEventListener('click', (e) => {
                         pairFoundSound.currentTime = 0;
                     }, 1000);
 
+                    totalPoints += 100;
                     pairFound();
                 }
 
@@ -299,7 +335,9 @@ function pairFound() {
     points++;
 
     if (points === (cards.length / 2)) {
-        console.log('Ganaste el juego');
+        /* console.log('ganaste el juego'); */
+        displayGameOverScreen(gameState.win);
+        gameOverScreen.classList.add('aparittion');
     }
 
     /* console.log(cards); */
@@ -308,6 +346,7 @@ function pairFound() {
 function substractAttemps() {
     // declaramos la variable ya que se ejecuta luego de haberse cargado el dom
     let attemps = parseInt(attempsHTML.textContent);
+    console.log(attemps);
 
     if (attemps && attemps > 0) {
         attemps--;
@@ -317,7 +356,8 @@ function substractAttemps() {
 
     if (attemps === 0) {
         // aqui deberiamos mostrar un modal cuando se perdio el juego
-        alert('Perdiste el juego');
+        displayGameOverScreen(gameState.lose);
+        gameOverScreen.classList.add('aparittion');
     }
 
 }

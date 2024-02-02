@@ -64,7 +64,7 @@ startGameBtn.addEventListener('click', (e) => {
     }
     
     if (normalBtn.classList.contains('selected') || hardBtn.classList.contains('selected')) {
-        startScreen.classList.add('slide-up');
+        startScreen.style.transform = 'translateY(-100%)';
     }
     else {
         alert('Debe elegir una dificultad para continuar');
