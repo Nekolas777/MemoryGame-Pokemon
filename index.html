@@ -7,8 +7,12 @@
   <title>Memory Game - PokeAPI</title>
   <link href="src/styles/reset.css" rel="stylesheet" type="text/css">
   <link href="src/styles/main.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <!-- POPPINS FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- OSWALD FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
   <!-- FONT AWESOME -->
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -16,7 +20,60 @@
 </head>
 
 <body>
-  <section class="start-screen">
+  <section class="rating-screen">
+    <i id="close-leaderboard" class="fa-solid fa-x"></i>
+    <div class="rating-table">
+      <div class="rating-tittle">
+        <h1>LeaderBoard</h1>
+      </div>
+      <div class="rating-img">
+        <img src="/public/images/leaderboard-img.svg">
+      </div>
+      <div class="rating-content">
+        <ul class="rating-list">
+          <li class="list-item">
+            <span class="list-num">1</span>
+            <img src="/public/images/charmander-face.jpg">
+            <h1 class="username">Brock Harrison</h1>
+            <span class="points-earned">9999</span>
+          </li>
+        </ul>
+        <ul class="rating-list">
+          <li class="list-item">
+            <span class="list-num">2</span>
+            <img src="/public/images/pikachu-face.webp">
+            <h1 class="username">Misty Waterflower</h1>
+            <span class="points-earned">9999</span>
+          </li>
+        </ul>
+        <ul class="rating-list">
+          <li class="list-item">
+            <span class="list-num">3</span>
+            <img src="/public/images/vaporeon-perfil.jpg">
+            <h1 class="username">Serena Yvonne</h1>
+            <span class="points-earned">9999</span>
+          </li>
+        </ul>
+        <ul class="rating-list">
+          <li class="list-item">
+            <span class="list-num">4</span>
+            <img src="/public/images/sooble-face.jpg">
+            <h1 class="username">Alisson Spring</h1>
+            <span class="points-earned">9999</span>
+          </li>
+        </ul>
+        <ul class="rating-list">
+          <li class="list-item">
+            <span class="list-num">5</span>
+            <img src="/public/images/luccario-face.jpg">
+            <h1 class="username">Clemont Lumiose </h1>
+            <span class="points-earned">9999</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="start-screen" style="display: none;">
     <div class="start-content">
       <img class="logo-pokemon" src="public/images/pokemon-logo.png" alt="logo_pokemon">
       <h1 class="start-tittle">Memory Game</h1>
@@ -31,10 +88,10 @@
       <button id="startGame-btn">Start the game</button>
     </div>
   </section>
-  <div class="attemps-container">
+  <div class="attemps-container" style="display: none;">
     <p>Attemps: <span id="attemps"></span></p>
   </div>
-  <div class="options-container">
+  <div class="options-container" style="display: none;">
     <i id="volume-option" class="fa-solid fa-volume-high"></i>
     <i id="flip-option" class="fa-solid fa-arrow-right-arrow-left"></i>
     <a href="https://github.com/Nekolas777" target="_blank"><i id="code-option" class="fa-solid fa-code"></i></a>
@@ -49,7 +106,7 @@
       <p class="gameOver-points">You earn: <span id="points">0</span> points</p>
       <img id="gameOver-gif" src="public/images/hunter-lose.gif" alt="waving_pikachu">
       <button id="returnMenu-btn">Back to Menu</button>
-    </div>  
+    </div>
   </section>
   <audio id="par-found" src="sounds/pokemon-level-up.mp3"></audio>
   <audio id="par-notFound" src="sounds/pokemon-runaway.mp3"></audio>

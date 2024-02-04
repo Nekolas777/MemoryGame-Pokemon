@@ -459,6 +459,147 @@ strong {
     box-shadow: 0px 3px #11235A;
 }
 
+/*-------------------------- LEADERBOARD SCREEN --------------------------*/
+
+
+.rating-screen {
+    /* border: 1px solid blue; */
+    position: relative;
+    height: 100dvh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rating-screen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+#close-leaderboard {
+    color: #11235A;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px 20px 0 0;
+    display: block;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.rating-table {
+    position: relative;
+    border: 5px solid #3468C0;
+    border-radius: 20px;
+    background-color: #FBF9F1;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px 20px 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.rating-table > .rating-tittle {
+    top: 0;
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid blue;
+    background-color: beige;
+    padding: 15px 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    transform: translate(0, -25px);
+}
+
+.rating-tittle > h1 {
+    font-family: "Oswald", sans-serif;
+    font-weight: 500;
+}
+
+.rating-table > .rating-img {
+    max-width: 500px;
+    width: 100%;
+    /* border: 1px solid blue; */
+}
+
+.rating-content {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid green; */
+    gap: 1.5rem;
+}
+
+.rating-img > img {
+    width: inherit;
+}
+
+.rating-content {
+    width: 100%;
+    /* margin: 20px 0; */
+}
+
+.rating-content > .rating-list {
+    width: inherit; 
+    background-color: #dddbd8;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.rating-list > .list-item {
+    display: flex;
+}
+
+.list-item > .list-num {
+    /* border: 1px solid red; */   
+    text-align: center;
+    width: 15px;
+}
+
+.list-item {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 1.2rem;
+}
+
+.list-item > .username {
+    /* border: 1px solid purple; */
+    flex: 1;
+    justify-self: end;
+}
+
+.list-item > img {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+}
+
+.username {
+    letter-spacing: 0.5px;
+}
+
+.points-earned {
+    letter-spacing: 1px;
+}
+
 
 @media screen and (max-width: 1440px) {}
 
