@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Game - PokeAPI</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- POPPINS FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- OSWALD FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script type="module" crossorigin src="/MemoryGame-Pokemon/assets/index-JZ2kxuQP.js"></script>
+  <link rel="stylesheet" crossorigin href="/MemoryGame-Pokemon/assets/index-Ni9Qh206.css">
+</head>
+
+<body>
+  <section class="rating-screen" style="display: none;">
+    <i id="close-leaderboard" class="fa-solid fa-x"></i>
+    <div class="rating-table">
+      <div class="rating-tittle">
+        <h1>LeaderBoard</h1>
+      </div>
+      <div class="rating-img">
+        <img src="/MemoryGame-Pokemon/assets/leaderboard-img-mIKD74WS.svg">
+      </div>
+      <div class="rating-content">
+        <ul class="rating-list">
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="start-screen">
+    <div class="start-content">
+      <img class="logo-pokemon" src="/MemoryGame-Pokemon/assets/pokemon-logo-AKTii2K2.png" alt="logo_pokemon">
+      <h1 class="start-tittle">Memory Game</h1>
+      <div class="difficult-container">
+        <button class="normal-difficult">Normal</button>
+        <button class="hard-difficult">Hard</button>
+      </div>
+      <p>Choose the difficult</p>
+      <div class="gif-container">
+        <img class="pikachu-gif" src="data:image/webp;base64,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" alt="waving_pikachu">
+      </div>
+      <div class="btn-container">
+        <button id="leaderboard-btn"><i class="fa-regular fa-star"></i></button>
+        <button id="startGame-btn">Start the game</button>
+        <a href="https://github.com/Nekolas777" target="_blank" id="code-btn"><i class="fa-solid fa-code"></i></a>
+      </div>
+    </div>
+  </section>
+  <div class="attemps-container">
+    <p>Attemps: <span id="attemps"></span></p>
+  </div>
+  <div class="options-container">
+    <i id="volume-option" class="fa-solid fa-volume-high"></i>
+    <i id="flip-option" class="fa-solid fa-arrow-right-arrow-left"></i>
+    <a href="https://github.com/Nekolas777" target="_blank"><i id="code-option" class="fa-solid fa-code"></i></a>
+  </div>
+  <section class="container-cards" style="display: none;">
+    <!-- You can use another HTML tag for a better structure, however, for the card flip i do it like this -->
+
+  </section>
+  <section class="gameOver-screen">
+    <div class="gameOver-content">
+      <h1 id="gameOver-tittle">You Win</h1>
+      <p class="gameOver-points">You earn: <span id="points">0</span> points</p>
+      <img id="gameOver-gif" src="/MemoryGame-Pokemon/assets/hunter-lose-QxBcgC7z.gif" alt="waving_pikachu">
+      <button id="returnMenu-btn">Back to Menu</button>
+    </div>
+  </section>
+  <audio id="par-found" src="sounds/pokemon-level-up.mp3"></audio>
+  <audio id="par-notFound" src="sounds/pokemon-runaway.mp3"></audio>
+  <audio id="option-selected" src="sounds/pokemon-plink-test.mp3"></audio>
+</body>
+
+</html>
