@@ -214,8 +214,7 @@ export function shuffleCards(time) {
     })
 
     displayCards(time);
-
-    /* console.log(seleccions); */
+    
     // si el boton ha sido presionado reiniciamos el contador de puntos
     if (hasUsedWildcard == false) {
         points = 0;

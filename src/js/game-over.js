@@ -77,7 +77,7 @@ function appendScore(actuallyScore) {
 
     updatePlaceScore(listItem);
 
-    // Convertir listItem a un array de objetos serializables
+    // Convertir listItem a un array de objetos serializables para añadir a localStorage
     let serializedList = [];
     listItem.forEach(item => {
         serializedList.push({
