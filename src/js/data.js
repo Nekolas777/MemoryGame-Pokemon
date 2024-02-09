@@ -50,3 +50,31 @@ export const gameState = {
     }
 
 }
+
+export const charactersScore = [
+    {
+        name: "Brock Harrison",
+        imgProfile: "/public/images/charmander-face.jpg",
+        points: 9100
+    },
+    {
+        name: "Misty WaterFlower",
+        imgProfile: "/public/images/pikachu-face.webp",
+        points: 8700
+    },
+    {
+        name: "Serena Yvonne",
+        imgProfile: "/public/images/vaporeon-perfil.jpg",
+        points: 9500
+    },
+    {
+        name: "Alisson Spring",
+        imgProfile: "/public/images/sooble-face.jpg",
+        points: 7900
+    },
+    {
+        name: "Clemont Lumiose",
+        imgProfile: "/public/images/luccario-face.jpg",
+        points: 9000
+    }
+]

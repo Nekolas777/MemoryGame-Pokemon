@@ -54,6 +54,7 @@ startGameBtn.addEventListener('click', (e) => {
     
     if (normalBtn.classList.contains('selected')) {
         console.log("Elegiste la dificultad normal");
+        cardsContainer.style.padding = '0px';
         startGame(normal);       
     }
     else if (hardBtn.classList.contains('selected')) {

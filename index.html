@@ -20,7 +20,7 @@
 </head>
 
 <body>
-  <section class="rating-screen">
+  <section class="rating-screen" style="display: none;">
     <i id="close-leaderboard" class="fa-solid fa-x"></i>
     <div class="rating-table">
       <div class="rating-tittle">
@@ -31,49 +31,41 @@
       </div>
       <div class="rating-content">
         <ul class="rating-list">
-          <li class="list-item">
+          <!-- <li class="list-item">
             <span class="list-num">1</span>
             <img src="/public/images/charmander-face.jpg">
             <h1 class="username">Brock Harrison</h1>
             <span class="points-earned">9999</span>
           </li>
-        </ul>
-        <ul class="rating-list">
           <li class="list-item">
             <span class="list-num">2</span>
             <img src="/public/images/pikachu-face.webp">
             <h1 class="username">Misty Waterflower</h1>
-            <span class="points-earned">9999</span>
+            <span class="points-earned">8270</span>
           </li>
-        </ul>
-        <ul class="rating-list">
           <li class="list-item">
             <span class="list-num">3</span>
             <img src="/public/images/vaporeon-perfil.jpg">
             <h1 class="username">Serena Yvonne</h1>
-            <span class="points-earned">9999</span>
+            <span class="points-earned">6920</span>
           </li>
-        </ul>
-        <ul class="rating-list">
           <li class="list-item">
             <span class="list-num">4</span>
             <img src="/public/images/sooble-face.jpg">
             <h1 class="username">Alisson Spring</h1>
-            <span class="points-earned">9999</span>
+            <span class="points-earned">4990</span>
           </li>
-        </ul>
-        <ul class="rating-list">
           <li class="list-item">
             <span class="list-num">5</span>
             <img src="/public/images/luccario-face.jpg">
             <h1 class="username">Clemont Lumiose </h1>
-            <span class="points-earned">9999</span>
-          </li>
+            <span class="points-earned">2250</span>
+          </li> -->
         </ul>
       </div>
     </div>
   </section>
-  <section class="start-screen" style="display: none;">
+  <section class="start-screen">
     <div class="start-content">
       <img class="logo-pokemon" src="public/images/pokemon-logo.png" alt="logo_pokemon">
       <h1 class="start-tittle">Memory Game</h1>
@@ -85,13 +77,17 @@
       <div class="gif-container">
         <img class="pikachu-gif" src="public/images/Running-Pikachu-GIF.webp" alt="waving_pikachu">
       </div>
-      <button id="startGame-btn">Start the game</button>
+      <div class="btn-container">
+        <button id="leaderboard-btn"><i class="fa-regular fa-star"></i></button>
+        <button id="startGame-btn">Start the game</button>
+        <a href="https://github.com/Nekolas777" target="_blank" id="code-btn"><i class="fa-solid fa-code"></i></a>
+      </div>
     </div>
   </section>
-  <div class="attemps-container" style="display: none;">
+  <div class="attemps-container">
     <p>Attemps: <span id="attemps"></span></p>
   </div>
-  <div class="options-container" style="display: none;">
+  <div class="options-container">
     <i id="volume-option" class="fa-solid fa-volume-high"></i>
     <i id="flip-option" class="fa-solid fa-arrow-right-arrow-left"></i>
     <a href="https://github.com/Nekolas777" target="_blank"><i id="code-option" class="fa-solid fa-code"></i></a>
@@ -115,6 +111,7 @@
   <script src="src/js/screen-start.js" type="module"></script>
   <script src="src/js/game-options.js" type="module"></script>
   <script src="src/js/game-over.js" type="module"></script>
+  <script src="src/js/leaderboard.js" type="module"></script>
 </body>
 
 </html>

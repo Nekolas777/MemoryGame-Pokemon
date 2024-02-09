@@ -27,17 +27,18 @@ function cardsAreFlipped() {
     return cards.length === countFlips;
 }
 
-volumeOption.addEventListener('click', (e) => {
-    
+volumeOption.addEventListener('click', () => {
     console.log('Hola soy el volumen');
 
-    if (volumeOption.className.includes('fa-volume-high')) {
-        volumeOption.className = 'fa-solid fa-volume-xmark';
+    if (volumeOption.classList.contains('fa-volume-high')) {
+        console.log('Cambio a mute');
+        volumeOption.classList.remove('fa-volume-high');
+        volumeOption.classList.add('fa-volume-xmark');
+    } else {
+        console.log('Cambio a volumen alto');
+        volumeOption.classList.remove('fa-volume-xmark');
+        volumeOption.classList.add('fa-volume-high');
     }
-    else {
-        volumeOption.className = 'fa-solid fa-volume-high';
-    }
-
 });
 
 flipOption.addEventListener('click', (e) => {

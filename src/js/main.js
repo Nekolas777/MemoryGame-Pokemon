@@ -1,4 +1,4 @@
-import { pokemonColor, gameState } from "./data";
+import { pokemonColor, gameState, charactersScore } from "./data";
 import { flipOption, hasUsedWildcard } from "./game-options";
 
 export const cardsContainer = document.querySelector('.container-cards');
@@ -8,17 +8,17 @@ export const gameOverScreen = document.querySelector('.gameOver-screen');
 const startScreen = document.querySelector('.start-screen');
 const pairFoundSound = document.getElementById('par-found');
 const pairNotFoundSound = document.getElementById('par-notFound');
-
 // endpoint to access the pokeAPI 
 const url = 'https://pokeapi.co/api/v2/pokemon/'
 
+export const ratingList = document.querySelector('.rating-list');
+// estado inicial del array al cargar la pagina
 // arreglo para almacenar las cartas que ya hay sido seleccionadas
 let seleccions = [];
-
 // contador de puntos que verifica cuando todos los pares hayan sido encontrados
 let points = 0;
 // puntos totales acumulados por cada flip encontrado o perdida
-let totalPoints = 0;
+export let totalPoints = 0;
 
 export function resetGame() {
 
@@ -303,7 +303,7 @@ cardsContainer.addEventListener('click', (e) => {
                     segundaCardFront.style.transform = 'rotateY(0deg)';
                     segundaCardsBack.style.transform = 'rotateY(180deg)';
                     // restamos los intentos disponibles por cada intento fallido
-                    totalPoints -= 25;
+                    totalPoints -= 250;
                     substractAttemps();
                 }
                 else {
@@ -313,7 +313,7 @@ cardsContainer.addEventListener('click', (e) => {
                         pairFoundSound.currentTime = 0;
                     }, 1000);
 
-                    totalPoints += 100;
+                    totalPoints += 1000;
                     pairFound();
                 }
 
