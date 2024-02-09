@@ -40,12 +40,12 @@ export const gameState = {
 
     win: {
         text: "You Win",
-        img: "/public/images/pichu-win.gif",
+        img: "images/pichu-win.gif",
         info: "win_img"
     },
     lose: {
         text: "You Lose",
-        img: "/public/images/hunter-lose.gif",
+        img: "images/hunter-lose.gif",
         info: "lose_img"
     }
 
@@ -54,27 +54,27 @@ export const gameState = {
 export const charactersScore = [
     {
         name: "Brock Harrison",
-        imgProfile: "/public/images/charmander-face.jpg",
+        imgProfile: "images/charmander-face.jpg",
         points: 9100
     },
     {
         name: "Misty WaterFlower",
-        imgProfile: "/public/images/pikachu-face.webp",
+        imgProfile: "images/pikachu-face.webp",
         points: 8700
     },
     {
         name: "Serena Yvonne",
-        imgProfile: "/public/images/vaporeon-perfil.jpg",
+        imgProfile: "images/vaporeon-perfil.jpg",
         points: 9500
     },
     {
         name: "Alisson Spring",
-        imgProfile: "/public/images/sooble-face.jpg",
+        imgProfile: "images/sooble-face.jpg",
         points: 7900
     },
     {
         name: "Clemont Lumiose",
-        imgProfile: "/public/images/luccario-face.jpg",
+        imgProfile: "images/luccario-face.jpg",
         points: 9000
     }
 ]

@@ -6,11 +6,11 @@ const btnReturnMenu = document.getElementById('returnMenu-btn');
 if (!localStorage.getItem('scoreList')) {
     // Creamos un array de objeto con la info de cada personaje y su puntuacion
     const scoreList = [
-        { num: "1", imgSrc: "/public/images/charmander-face.jpg", username: "Brock Harrison", points: "9999" },
-        { num: "2", imgSrc: "/public/images/pikachu-face.webp", username: "Misty Waterflower", points: "8270" },
-        { num: "3", imgSrc: "/public/images/vaporeon-perfil.jpg", username: "Serena Yvonne", points: "6920" },
-        { num: "4", imgSrc: "/public/images/sooble-face.jpg", username: "Alisson Spring", points: "4990" },
-        { num: "5", imgSrc: "/public/images/luccario-face.jpg", username: "Clemont Lumiose", points: "2250" }
+        { num: "1", imgSrc: "images/charmander-face.jpg", username: "Brock Harrison", points: "9999" },
+        { num: "2", imgSrc: "images/pikachu-face.webp", username: "Misty Waterflower", points: "8270" },
+        { num: "3", imgSrc: "images/vaporeon-perfil.jpg", username: "Serena Yvonne", points: "6920" },
+        { num: "4", imgSrc: "images/sooble-face.jpg", username: "Alisson Spring", points: "4990" },
+        { num: "5", imgSrc: "images/luccario-face.jpg", username: "Clemont Lumiose", points: "2250" }
     ];
 
     // almacenamos el array de objetos serializables en el localStorage después de convertirlo a JSON
@@ -37,7 +37,7 @@ function appendScore(actuallyScore) {
 
     newScore.innerHTML = `
         <span class="list-num"></span>
-        <img src="/public/images/squirtle-face.jpg">
+        <img src="images/squirtle-face-jpg">
         <h1 class="username">Your name</h1>
         <span class="points-earned">${actuallyScore}</span>
     `;
