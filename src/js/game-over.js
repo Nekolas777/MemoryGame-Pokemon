@@ -37,7 +37,7 @@ function appendScore(actuallyScore) {
 
     newScore.innerHTML = `
         <span class="list-num"></span>
-        <img src="images/squirtle-face-jpg">
+        <img src="images/squirtle-face.jpg">
         <h1 class="username">Your name</h1>
         <span class="points-earned">${actuallyScore}</span>
     `;
