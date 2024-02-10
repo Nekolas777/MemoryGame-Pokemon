@@ -36,7 +36,9 @@ a {
     /* border: 1px solid red; */
     width: 100%;
     position: fixed;
-    height: 100dvh;
+    min-height: 100dvh;
+    height: 100%;
+    overflow-y: auto;
     background-image: url("/public/images/gameStart-background.png");
     background-position: center;
     background-repeat: no-repeat;

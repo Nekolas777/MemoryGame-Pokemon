@@ -22,11 +22,15 @@ export let totalPoints = 0;
 
 export function resetGame() {
 
+    const image = document.getElementById('gameOver-gif');
+
     gameOverScreen.classList.remove('aparittion');
     startScreen.style.display = 'block';
     startScreen.style.transform = 'translateY(0%)';
     cardsContainer.style.display = 'none';
     flipOption.style.display = 'block';
+    
+    image.src = "";
     points = 0;
     totalPoints = 0;
 
