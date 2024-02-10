@@ -1,4 +1,3 @@
-:root {}
 
 * {
     box-sizing: border-box;
@@ -202,7 +201,7 @@ a {
     position: fixed;
     right: 0;
     top: 0;
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
     gap: 30px;
@@ -226,7 +225,7 @@ a {
 /*-------------------------- ATTEMPS CONTAINER --------------------------*/
 
 .attemps-container {
-    display: inline-block;
+    display: none;
     border: 7px solid #1862a7;
     background-color: #ffda21;
     border-top: none;

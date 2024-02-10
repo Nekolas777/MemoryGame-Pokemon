@@ -1,6 +1,9 @@
 import { cardsContainer, getPokemon, displayCards, attempsHTML } from "./main";
 import { gameSelection } from "./data";
 
+const attempsContainer = document.querySelector('.attemps-container');
+const optionsContainer = document.querySelector('.options-container');
+
 const startContent = document.querySelector('.start-content')
 const hardBtn = document.querySelector('.hard-difficult');
 const normalBtn = document.querySelector('.normal-difficult');
@@ -65,6 +68,8 @@ startGameBtn.addEventListener('click', (e) => {
     }
     
     if (normalBtn.classList.contains('selected') || hardBtn.classList.contains('selected')) {
+        attempsContainer.style.display = 'inline-block'
+        optionsContainer.style.display = 'flex';
         startScreen.style.transform = 'translateY(-100%)';
     }
     else {
