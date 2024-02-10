@@ -31,6 +31,7 @@ export function resetGame() {
     flipOption.style.display = 'block';
     
     image.src = "";
+    seleccions = [];
     points = 0;
     totalPoints = 0;
 
